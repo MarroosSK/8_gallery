@@ -1,0 +1,17 @@
+.modal_img{
+    width: 650px;
+    height: 500px;
+}
+
+@media (max-width: 730px) {
+    .modal_img {
+      width: 450px;
+      height: 300px;
+    }
+  }
+@media (max-width: 470px) {
+    .modal_img {
+      width: 250px;
+      height: 200px;
+    }
+  }

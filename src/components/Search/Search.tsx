@@ -1,29 +1,28 @@
 import { useEffect } from "react";
 import { useQuery } from "react-query";
-import axios from "axios";
 import { InputBase, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { alpha } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { searchTerm, setPhotos } from "../../features/searchSlice";
 import { SearchSliceType } from "../../types/types";
+import { useNavigate } from "react-router-dom";
+import { fetchSearchedData } from "../../api/fetchSearchedData";
 
 const Search = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const term = useSelector(
     (state: { searchSlice: SearchSliceType }) => state.searchSlice.term
   );
-  const API_KEY = import.meta.env.VITE_API_KEY;
 
   const { data } = useQuery(["photos", term], async () => {
-    const response = await axios.get(
-      `https://api.unsplash.com/search/photos?query=${term}&orientation=portrait&client_id=${API_KEY}&per_page=15&page=1&height=300`
-    );
-    return response.data.results;
+    return fetchSearchedData(term);
   });
 
   const handleSearchTerm = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(searchTerm(e.target.value));
+    navigate("/gallery");
   };
 
   useEffect(() => {
@@ -40,6 +39,7 @@ const Search = () => {
         display: "flex",
         justifyContent: "start",
         alignItems: "center",
+        borderRadius: "15px",
         backgroundColor: alpha("#fff", 0.15),
         "&:hover": {
           backgroundColor: alpha("#fff", 0.45),
@@ -50,6 +50,7 @@ const Search = () => {
         },
         width: "170px",
         transition: "width 0.3s ease-in-out",
+        marginBottom: { xs: "20px", sm: 0 },
       }}
     >
       <SearchIcon sx={{ ml: 1 }} />
