@@ -1,5 +1,5 @@
 import { AppBar, Box, Toolbar, Typography, Stack } from "@mui/material";
-import { NavigationLinks, Search } from "..";
+import { NavigationLinks } from "..";
 import LooksOneIcon from "@mui/icons-material/LooksOne";
 import Looks5Icon from "@mui/icons-material/Looks5";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ const Navigation = () => {
       <AppBar
         elevation={0}
         position="relative"
-        sx={{ backgroundColor: "#2D58CF" }}
+        sx={{ backgroundColor: "#2D58CF", height: "80px" }}
       >
         <Toolbar
           sx={{
@@ -32,7 +32,6 @@ const Navigation = () => {
               </Stack>
             </Box>
           </Link>
-          <Search />
           <NavigationLinks />
         </Toolbar>
       </AppBar>

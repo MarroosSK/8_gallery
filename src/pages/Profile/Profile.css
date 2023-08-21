@@ -1,0 +1,103 @@
+.profile {
+    width: 100%;
+    height: auto;
+}
+
+.hero-video {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.hero-video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 100;
+}
+
+.profile__top {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    object-fit: contain;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+}
+
+
+
+
+.profile__top img {
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    border: 4px solid #2D58CF;
+    border-radius: 50%;
+}
+
+
+
+.profile__wrapper {
+    margin-top: 40px;
+}
+
+.profile__middle{
+    margin-top: 30px;
+}
+
+.profile__middle h2{
+    padding: 30px;
+    text-align: center;
+    color: inherit;
+}
+
+.profile__bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.photoItem {
+    position: relative;
+    width: 300px;
+    height: 240px;
+}
+
+.photoItem img {
+    width: 300px;
+    height: 240px;
+    border-radius: 10px;
+}
+
+.photoItem .close__icon{
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 50;
+    font-size: 2rem;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    transition: 0.2s ease-in-out;
+}
+.photoItem .close__icon:hover{
+    color:#a52729;
+}
+
+@media only screen and (max-width: 300px) {
+    .photoItem img{
+        width: 250px;
+    }
+}

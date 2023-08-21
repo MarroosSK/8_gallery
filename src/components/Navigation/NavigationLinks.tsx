@@ -1,5 +1,6 @@
-import { IconButton, Typography, Box } from "@mui/material";
+import { IconButton, Box } from "@mui/material";
 import gallery from "../../assets/picture.png";
+import user from "../../assets/user.png";
 import { Link } from "react-router-dom";
 
 const NavigationLinks = () => {
@@ -13,16 +14,10 @@ const NavigationLinks = () => {
           }}
         >
           <img src={gallery} alt="gallery_icon" width={34} />
-          <Typography
-            variant="caption"
-            sx={{ color: "white", fontWeight: "bold" }}
-          >
-            Gallery
-          </Typography>
         </IconButton>
       </Link>
-      {/* no db yet */}
-      {/* <Link to="/profile">
+
+      <Link to="/profile">
         <IconButton
           sx={{
             background: "transparent",
@@ -30,14 +25,8 @@ const NavigationLinks = () => {
           }}
         >
           <img src={user} alt="profile_icon" width={34} />
-          <Typography
-            variant="caption"
-            sx={{ color: "white", fontWeight: "bold" }}
-          >
-            Profile
-          </Typography>
         </IconButton>
-      </Link> */}
+      </Link>
     </Box>
   );
 };

@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Photo, SearchSliceType } from "../../types/types";
 import { GalleryItem } from "../../components";
 import galleryFloat from "../../assets/gallery-float.png";
 import "./Gallery.css";
+import HeroGallery from "../../components/Hero/HeroGallery";
 
 const Gallery = () => {
   const photos = useSelector(
@@ -13,47 +14,36 @@ const Gallery = () => {
   const emptyPhotos = photos.length === 0;
   return (
     <Box>
-      <Container>
+      <HeroGallery />
+      <Box className="container">
         {emptyPhotos ? (
           <Box
+            className="gallery__wrapper"
             display="flex"
             justifyContent="center"
             alignItems="center"
-            height="100vh"
             sx={{
-              flexDirection: { xs: "column", sm: "row" },
+              flexDirection: { xs: "column", md: "row" },
             }}
           >
             <Typography
               sx={{ color: "#374957", fontSize: "22px", fontWeigh: "bold" }}
             >
-              Use search to{" "}
-              <span style={{ color: "#2D58CF", fontWeight: "bold" }}>
-                find image
-              </span>
+              Use search to <span className="highlight">find image</span>
             </Typography>
-            <img
-              src={galleryFloat}
-              height="500px"
-              width="350px"
-              className="img_float"
-            />
+            <img src={galleryFloat} className="img_float" />
           </Box>
         ) : (
-          <Grid
-            container
-            justifyContent="center"
-            sx={{ marginTop: 2, padding: "auto" }}
-          >
+          <Box display="flex" justifyContent="center" alignItems="center">
             <div className="grid_gallery">
               {photos &&
                 photos.map((photo: Photo) => (
                   <GalleryItem key={photo.id} photo={photo} />
                 ))}
             </div>
-          </Grid>
+          </Box>
         )}
-      </Container>
+      </Box>
     </Box>
   );
 };

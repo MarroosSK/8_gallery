@@ -1,81 +1,76 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
-import axios from "axios";
 import "./Trending.css";
-import ModalComponent from "../Modal/Modal";
-import { useModal } from "../../hooks/useModal";
-import { Photo } from "../../types/types";
+import { Photo, TrendingSliceType } from "../../types/types";
+import { NavLink } from "react-router-dom";
+import { fetchTrendingImages } from "../../api/fetchSearchedData";
+import { useQuery } from "react-query";
+import { useDispatch, useSelector } from "react-redux";
+import { setTrendyPhotos } from "../../features/trendingSlice";
+import { GalleryItem } from "..";
 
 const Trending = () => {
-  const API_KEY = import.meta.env.VITE_API_KEY;
-  const [trendingImages, setTrendingImages] = useState([]);
-  const { open, setOpen, handleCloseModal } = useModal();
-  const [selectedImageUrl, setSelectedImageUrl] = useState("");
+  const dispatch = useDispatch();
+  const trendyPhotos = useSelector(
+    (state: { trendingSlice: TrendingSliceType }) =>
+      state.trendingSlice.trendyPhotos
+  );
 
-  const handleOpenModalWithUrl = (imageUrl: string) => {
-    setSelectedImageUrl(imageUrl);
-    setOpen(true);
-  };
+  const { data } = useQuery(["trendingPhotos"], async () => {
+    return fetchTrendingImages();
+  });
 
   useEffect(() => {
-    const getTrendingImages = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.unsplash.com/photos?order_by=popular&full&per_page=10&client_id=${API_KEY}`
-        );
-        setTrendingImages(response.data);
-      } catch (error) {
-        console.error("Error fetching trending images:", error);
-      }
-    };
-
-    getTrendingImages();
-  }, [trendingImages, API_KEY]);
+    if (data) {
+      dispatch(setTrendyPhotos(data));
+    }
+  }, [dispatch, data]);
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      sx={{ minHeight: "100vh", marginTop: "60px" }}
-    >
-      <Box display="flex">
-        <Typography
-          sx={{ color: "#374957", fontSize: "22px", fontWeigh: "bold" }}
-        >
-          <span style={{ color: "#2D58CF", fontWeight: "bold" }}>Explore</span>{" "}
-          trending images
-        </Typography>
-      </Box>
-
-      <Typography
-        sx={{ color: "inherit", marginTop: "15px", fontSize: "16px" }}
+    <Box>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        sx={{ minHeight: "100vh", marginTop: "60px" }}
       >
-        Check what's popular and find out more details
-      </Typography>
-
-      {/* TRENDY */}
-      <div className="grid_gallery">
-        {trendingImages.map((image: Photo) => (
-          <div
-            className="grid_item"
-            key={image?.id}
-            onClick={() => handleOpenModalWithUrl(image.urls?.regular)}
+        <Box display="flex">
+          <Typography
+            sx={{
+              color: "#374957",
+              fontSize: "2.5rem",
+              fontWeigh: "bold",
+              textWrap: "balance",
+            }}
           >
-            <img
-              src={image.urls?.regular}
-              alt={image?.alt_description}
-              style={{ borderRadius: "15px" }}
-            />
-          </div>
-        ))}
-      </div>
+            <span className="highlight">Explore</span> trending images
+          </Typography>
+        </Box>
 
-      <ModalComponent
-        open={open}
-        imageUrl={selectedImageUrl}
-        handleCloseModal={handleCloseModal}
-      />
+        <Typography
+          sx={{
+            color: "inherit",
+            marginTop: "15px",
+            fontSize: "0.8rem",
+            textWrap: "balance",
+          }}
+        >
+          Check what's popular and find out more details
+        </Typography>
+
+        {/* TRENDY */}
+        <div className="grid_gallery">
+          {trendyPhotos &&
+            trendyPhotos.map((photo: Photo) => (
+              <GalleryItem key={photo.id} photo={photo} />
+            ))}
+        </div>
+      </Box>
+      <Box className="btn">
+        <NavLink to="/gallery">
+          <button className="primary__btn">see more &#8594;</button>
+        </NavLink>
+      </Box>
     </Box>
   );
 };

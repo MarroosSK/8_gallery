@@ -1,3 +1,25 @@
+
+
+.gallery__wrapper img{
+  width: 500px;
+  height: 450px;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .gallery__wrapper img{
+      width: 400px;
+      height: 350px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .gallery__wrapper img{
+      width: 280px;
+      height: 220px;
+  }
+}
+
+
 /* Animácia float */
 @keyframes floatAnimation {
     0%, 100% {

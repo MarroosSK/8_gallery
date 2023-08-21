@@ -1,0 +1,20 @@
+.details__img-box img{
+    width: 500px;
+    height: 450px;
+}
+
+.details__wrapper{
+    margin: 10px;
+}
+
+@media only screen and (max-width: 992px) {
+    .details__img-box img{
+        width: 400px;
+        height: 350px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .details__wrapper{
+        margin: auto;
+    }
+}

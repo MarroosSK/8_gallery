@@ -1,51 +1,42 @@
 import "./Hero.css";
-import { Box, Grid, Stack, Typography } from "@mui/material";
-import HeroCategory from "./HeroCategory";
-import LooksOneIcon from "@mui/icons-material/LooksOne";
-import Looks5Icon from "@mui/icons-material/Looks5";
+import { Box, Typography } from "@mui/material";
+import { Search } from "..";
 
 const Hero = () => {
   return (
     <Box
-      sx={{ height: { xs: "100%", sm: "500px" }, backgroundColor: "#2D58CF" }}
+      sx={{ height: "500px", backgroundColor: "#2D58CF", padding: "30px 0" }}
     >
       <Box
         display="flex"
         flexDirection="column"
-        justifyContent="center"
         alignItems="center"
-        height="100%"
+        sx={{
+          marginTop: { xs: "125px", sm: "75px" },
+        }}
       >
-        <Box display="flex">
-          <Typography
-            variant="h1"
-            fontSize="40px"
-            fontWeight="bold"
-            marginBottom="10px"
-            color="inherit"
-          >
-            First
-          </Typography>
-          <Stack direction="row">
-            <LooksOneIcon />
-            <Looks5Icon />
-          </Stack>
-        </Box>
-        <Typography fontSize="30px" fontWeight="bold" marginBottom="10px">
-          all images in one place
+        <Typography
+          fontWeight="bold"
+          marginBottom="10px"
+          lineHeight="50px"
+          sx={{
+            fontSize: { xs: "2rem", sm: "3rem" },
+            textWrap: "balance",
+          }}
+        >
+          All images in <span className="highlight">One Place</span>
         </Typography>
-        <Typography fontSize="14px">
+        <Typography
+          marginBottom="40px"
+          sx={{
+            textWrap: "balance",
+            marginTop: { xs: "10px", sm: "30px" },
+            fontSize: { xs: "1rem", sm: "1.5rem" },
+          }}
+        >
           find high quality images, powered by Unsplash
         </Typography>
-        <Grid
-          container
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          marginTop="60px"
-        >
-          <HeroCategory />
-        </Grid>
+        <Search />
       </Box>
     </Box>
   );

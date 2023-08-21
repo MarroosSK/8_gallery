@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
-import people from "../assets/people.webp";
-import nature from "../assets/nature.webp";
-import animals from "../assets/animals.webp";
+import people from "../assets/people.jpg";
+import nature from "../assets/nature.jpg";
+import animals from "../assets/animals.jpg";
 import SyncOutlinedIcon from "@mui/icons-material/SyncOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ThumbUpOffAltOutlinedIcon from "@mui/icons-material/ThumbUpOffAltOutlined";
