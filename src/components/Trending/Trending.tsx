@@ -59,7 +59,11 @@ const Trending = () => {
         </Typography>
 
         {/* TRENDY */}
-        <div className="grid_gallery">
+        <div
+          className="grid_gallery"
+          data-aos="fade-up"
+          data-aos-duration="1100"
+        >
           {trendyPhotos &&
             trendyPhotos.map((photo: Photo) => (
               <GalleryItem key={photo.id} photo={photo} />

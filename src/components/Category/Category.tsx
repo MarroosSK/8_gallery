@@ -69,6 +69,8 @@ const Category = () => {
             flexWrap: "wrap",
             gap: "2rem",
           }}
+          data-aos="fade-right"
+          data-aos-duration="1100"
         >
           {categoryData.map((cat) => (
             <NavLink to={"/gallery"}>

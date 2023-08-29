@@ -15,6 +15,7 @@ import Profile from "./pages/Profile/Profile";
 import { useScrollTop } from "./hooks/useScrollTop";
 import gallery from "./assets/gallery.png";
 import user from "./assets/user.png";
+import Aos from "aos";
 
 const Layout = () => {
   const { isScrolled } = useScrollTop();
@@ -108,6 +109,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  useEffect(() => {
+    Aos.init();
+  }, []);
   return (
     <Box>
       <RouterProvider router={router} />

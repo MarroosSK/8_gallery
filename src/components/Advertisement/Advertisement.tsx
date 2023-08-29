@@ -57,7 +57,11 @@ const Advertisement = () => {
             <button className="primary__btn">Join &#8594;</button>
           </Box>
         </Box>
-        <Box sx={{ display: { xs: "none", sm: "block" } }}>
+        <Box
+          sx={{ display: { xs: "none", sm: "block" } }}
+          data-aos="fade-in"
+          data-aos-duration="1100"
+        >
           <img
             src={community}
             width="500px"
