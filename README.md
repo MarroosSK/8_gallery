@@ -1,12 +1,12 @@
 
 # Gallery App
 
-It is an app, where user can search for various images and preview them in modal. App is fetching data from unsplash API.
+Gallery app made with typescript and redux toolkit. Purpose of this app is to allow user search for pictures and display them in modal.
 
 
 ## Screenshots
 
-![App Screenshot](https://i.postimg.cc/RVHP2SPL/8-gallery.jpg)
+![App Screenshot](https://i.postimg.cc/j2ZvdTPn/first15-Pic.jpg)
 
 
 ## Authors
@@ -47,10 +47,11 @@ I'm a react frontend developer working on my skills everyday.
 
 
 ## 🛠 Skills
-Javascript, Typescript, HTML, CSS, React
+Javascript, Typescript, HTML, CSS, React, Express, SQL (Postgre/Mysql), Prisma ORM
 
 
 ## Lessons Learned
 
-By building this project i've practiced Typescript and Redux toolkit as well as work with external API and fetching it by use of React Query.
+By building this project i've practiced Typescript and learned how to implement Redux toolkit as well as work with external API and fetching it by use of React Query.
+ I've tried to implement GRID gallery and used various API endpoints to fetch data.
 
